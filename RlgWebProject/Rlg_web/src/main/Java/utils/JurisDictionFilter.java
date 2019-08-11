@@ -31,6 +31,9 @@ public class JurisDictionFilter implements Filter {
             chain.doFilter(req,resp);
             return;
         }
+
+
+
         //其他请求处理
         //验证session是非用户信息
         HttpSession session=request.getSession();

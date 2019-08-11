@@ -3,15 +3,14 @@ package service;
 import common.Const;
 import common.ResponseCode;
 import dao.UserDao;
-import org.omg.CORBA.UserException;
 import pojo.Users;
-
-import java.security.interfaces.RSAKey;
 import java.util.List;
 
 public class UserService {
     private UserDao ud = new UserDao();
+    //查询用户列表业务
     public ResponseCode selectAll(String pageSize, String pageNum) {
+        ResponseCode rs = new ResponseCode();
         if (pageSize==null || pageSize.equals("")){
             pageSize="10";
         }
@@ -21,12 +20,12 @@ public class UserService {
 
         List<Users> li = ud.selectAll(pageSize,pageNum);
         //如果集合元素是空
-        ResponseCode rs = new ResponseCode();
+
         rs.setStatus(0);
         rs.setData(li);
         return rs;
     }
-
+    //用户登录业务
     public ResponseCode selectOne(String username, String password) {
         ResponseCode rs = new ResponseCode();
         if (username==null || username.equals("") || password==null || password.equals("")){
@@ -40,7 +39,7 @@ public class UserService {
         //如果用户不存在
         if (users==null){
             rs.setStatus(1);
-            rs.setMag("账号或密码错误！");
+            rs.setMag("用户不存在！");
             return rs;
         }
         //用户权限
@@ -53,7 +52,7 @@ public class UserService {
         rs.setData(users);
       return rs;
     }
-
+    //用户禁用业务
     public ResponseCode selectUid(String uids) {
         ResponseCode rs = new ResponseCode();
         if (uids == null || uids.equals("")){
@@ -94,4 +93,6 @@ public class UserService {
         rs.setData(row);
         return rs;
     }
+
+
 }

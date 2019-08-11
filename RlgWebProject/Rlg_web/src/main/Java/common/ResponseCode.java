@@ -29,6 +29,13 @@ public class ResponseCode<T> {
         this.mag = mag;
     }
     //成功的时候只要返回状态码和成功获取数据
+    public static <T>ResponseCode successRs(T data){
+        ResponseCode rs = new ResponseCode();
+        rs.setStatus(0);
+        rs.setData(data);
+        return rs;
+    }
+
     //失败的时候返回状态码和失败的信息
 
     @Override

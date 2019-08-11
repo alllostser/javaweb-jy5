@@ -26,12 +26,12 @@ public class Users {
         this.uname = uname;
     }
 
-    public String getPas() {
+    public String getPsd() {
         return psd;
     }
 
-    public void setPas(String pas) {
-        this.psd = pas;
+    public void setPsd(String psd) {
+        this.psd = psd;
     }
 
     public String getTel() {
